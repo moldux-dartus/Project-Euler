@@ -16,4 +16,15 @@ even' n
 --UGLY
 getN n = if last (take n fibs) > 4000000 then (n-1) else getN (n+1) 
 
-showSum = sum $ take (getN 1) $ map (\ x -> even' x) fibs 
+showSum = sum $ take (getN 1) $ map (\ x -> even' x) fibs
+
+--After having learned the takeWhile function and remembering filter
+
+fibs :: [Int]
+fibs = 0 : 1 : [ a + b | (a, b) <- zip fibs (tail fibs)]
+
+evenFibs :: [Int]
+evenFibs = filter even fibs
+
+showSum' :: Int
+showSum' = sum $ takeWhile (< 4000000) evenFibs
