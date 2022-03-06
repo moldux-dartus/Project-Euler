@@ -7,3 +7,6 @@ isDiv y x
   | otherwise      = False 
 
 trimmedRange = [19,38..]
+
+--I didn't know about lcm
+showAnswer' = foldr1 lcm [1..20]
